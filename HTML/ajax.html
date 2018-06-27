@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			function loadXML(){
+				
+				var xmlhttp;
+				if (window.XMLHttpRequest) {
+					 xmlhttp = new XMLHttpRequest();
+				} else{
+					 xmlhttp = new ActiveXObject();
+				}
+				xmlhttp.onreadystatechange = function(){
+					
+					if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+						document.getElementById("ajax-check").innerHTML = xmlhttp.responseText;
+						
+					}
+				}
+				xmlhttp.open("GET","/text/check.txt",true);
+				xmlhttp.send();
+			}
+
+		</script>
+	</head>
+	<body>
+		<div id="ajax-check">
+			
+		</div>
+		<button id="button1" type="button" onclick="loadXML()">check</button>
+	</body>
+</html>

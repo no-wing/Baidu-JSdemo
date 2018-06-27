@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		.content1{
+			width: 1000px;
+			height: 800px;
+			background-color: azure;
+			padding: 10px;
+		}
+		#text_list li{
+			width: 100%;
+			height: auto;
+			background-color:lightcoral;
+			list-style-type: none;
+			padding: 5px;
+			border-radius: 3px;
+			margin: 2px;
+		}
+	</style>
+	<body>
+		<textarea id="text_input"  rows="5" cols="50"></textarea><button id="sent_btn">提交</button>
+		<input type="text"  id="text_search"  /><button id="search_btn">搜索</button>
+		<div class="content1">
+			<ul id="text_list">
+				<li>123</li>
+			</ul>
+		</div>
+		<script type="text/javascript">
+			document.getElementById("sent_btn").onclick = function(){
+				var text_content = document.getElementById("text_input").value;
+				var text_array = text_content.split("/");
+				for (var i=0;i<text_array.length;i++) {
+					var parent = document.getElementById("text_list");
+					var newLi = document.createElement("li");
+					newLi.innerHTML = text_array[i];
+					parent.appendChild(newLi);
+				}		
+			 }
+			document.getElementById("search_btn").onclick = function(){
+				var text_ul = document.getElementById("text_list");
+				var text_li = text_ul.getElementsByTagName("li");
+				var key_search = document.getElementById("text_search").value;
+				for (var i=0;i<text_li.length;i++) {
+					if (text_li[i].innerHTML.indexOf(key_search) != -1) {
+						 text_li[i].style.backgroundColor = "blue";
+					}
+					else{
+					}
+				}
+			}
+
+		</script>
+	</body>
+</html>
